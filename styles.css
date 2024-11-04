@@ -16,6 +16,7 @@ header {
     color: #fff;
     padding: 15px 0;
     text-align: center;
+    position: relative; /* Permet au menu de se positionner correctement */
 }
 
 header nav {
@@ -24,6 +25,7 @@ header nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px; /* Ajout de padding pour les bords */
 }
 
 header .logo {
@@ -31,20 +33,34 @@ header .logo {
     font-weight: 600;
 }
 
-header ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+.hamburger {
+    display: inline-block;
+    font-size: 2rem; /* Augmente la taille du bouton hamburger */
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 20px; /* Ajoute un peu d'espace */
 }
 
-header ul li a {
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline; /* Pour les écrans plus grands */
+}
+
+.nav-links li a {
     color: #fff;
     text-decoration: none;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 
-header ul li a:hover {
+.nav-links li a:hover {
     color: #ffb400;
 }
 
@@ -53,8 +69,8 @@ header ul li a:hover {
     color: #fff;
     padding: 100px 20px;
     display: flex;
-    flex-direction: column; /* Change pour flex-direction: column pour mobile */
-    align-items: center; /* Centre le contenu */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
@@ -84,15 +100,15 @@ header ul li a:hover {
 .hero-image {
     flex: 1;
     display: flex;
-    justify-content: center; /* Centre horizontalement */
+    justify-content: center;
 }
 
 .hero-image img {
-    width: 250px; /* Largeur fixe pour garantir une forme carrée */
-    height: 250px; /* Hauteur égale à la largeur pour un cercle parfait */
-    border-radius: 50%; /* Rendre l'image parfaitement ronde */
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Ombre subtile autour de l'image */
-    object-fit: cover; /* Remplissage de l'image sans déformation */
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
 }
 
 .btn {
@@ -122,7 +138,7 @@ h2 {
 
 .skills-grid {
     display: flex;
-    flex-wrap: wrap; /* Permet le wrap sur mobile */
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: space-around;
     text-align: center;
@@ -131,57 +147,50 @@ h2 {
 .skill-item {
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    flex: 1 1 30%; /* Prend au moins 30% de l'espace disponible */
-}
-
-.experience-item {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 30%;
 }
 
 footer {
     background-color: #333;
     color: #fff;
+    padding: 20px 0;
     text-align: center;
-    padding: 15px 0;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Par défaut, caché sur mobile */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #333;
-        flex-direction: column;
-        padding: 20px;
-    }
+/* Styles spécifiques au menu hamburger */
+#nav-links {
+    display: none; /* Masquer le menu par défaut */
+    flex-direction: column; /* Afficher les éléments en colonne */
+    background-color: #333; /* Couleur de fond pour le menu */
+    position: absolute; /* Positionner le menu */
+    top: 60px; /* Distance du haut de l'écran */
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* S'assurer que le menu est au-dessus des autres éléments */
+}
 
-    .nav-links.show {
-        display: flex; /* Montre le menu lorsque la classe 'show' est ajoutée */
-    }
+#nav-links li {
+    margin: 10px 0; /* Espacement entre les éléments */
+}
 
+#nav-links.show {
+    display: flex; /* Afficher le menu quand il est activé */
+}
+
+@media (min-width: 768px) {
     .hamburger {
-        display: inline-block; /* Montre le bouton hamburger sur mobile */
+        display: none; /* Masquer le hamburger sur les écrans plus larges */
     }
 
-    header ul {
-        display: none; /* Cacher la liste de navigation par défaut sur mobile */
+    .nav-links {
+        display: flex; /* Afficher le menu sous forme de ligne */
     }
-}
 
-#contact {
-    padding: 60px 20px;
-    text-align: center; /* Centre le texte dans la section */
-}
-
-#contact .btn {
-    display: inline-block;
-    margin-top: 20px; /* Ajoute un espace au-dessus du bouton */
+    #nav-links {
+        position: static; /* Réinitialiser la position pour les écrans plus larges */
+        background-color: transparent; /* Fond transparent pour les écrans plus larges */
+        flex-direction: row; /* Éléments en ligne */
+    }
 }
