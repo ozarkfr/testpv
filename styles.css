@@ -140,12 +140,11 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-around;
-    text-align: center;
+    justify-content: center;
 }
 
 .skill-item {
-    background-color: #fff;
+    background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -161,7 +160,7 @@ footer {
 
 /* Styles spécifiques au menu hamburger */
 #nav-links {
-    display: none; /* Masquer le menu par défaut */
+    display: none; /* Masquer le menu par défaut sur mobile */
     flex-direction: column; /* Afficher les éléments en colonne */
     background-color: #333; /* Couleur de fond pour le menu */
     position: absolute; /* Positionner le menu */
@@ -186,11 +185,14 @@ footer {
 
     .nav-links {
         display: flex; /* Afficher le menu sous forme de ligne */
+        position: static; /* Réinitialiser la position pour les écrans plus larges */
+        background-color: transparent; /* Fond transparent pour les écrans plus larges */
+        flex-direction: row; /* Éléments en ligne */
     }
 
     #nav-links {
-        position: static; /* Réinitialiser la position pour les écrans plus larges */
-        background-color: transparent; /* Fond transparent pour les écrans plus larges */
+        display: flex; /* Affiche le menu directement sur les écrans plus larges */
+        position: static; /* Réinitialiser la position */
         flex-direction: row; /* Éléments en ligne */
     }
 }
